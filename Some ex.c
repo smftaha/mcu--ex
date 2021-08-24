@@ -61,5 +61,10 @@ set breakpoint and an intruction after that. change PC to the next instruction f
 __BKPT	(1);
 __NOP	  ();
 //////////////////////////////////////////////////////
-  
- 
+enter ascii in windows
+0x0d  \r  '\r'  carriage return
+0x0a  \n  '\n'  line feed
+
+visual studio
+@end of send strings: send 0x0a 
+//////////////////////////////////////////////////////
