@@ -68,3 +68,19 @@ enter ascii in windows
 visual studio
 @end of send strings: send 0x0a 
 //////////////////////////////////////////////////////
+
+	SysTick->CTRL=	SysTick_CTRL_ENABLE_Msk	|	SysTick_CTRL_TICKINT_Msk;//	|SysTick_CTRL_CLKSOURCE_Msk;
+ SysTick->LOAD=	(FCPU/1000)-1;
+	DBGMCU->CR=	DBGMCU_CR_DBG_STANDBY;
+	DBGMCU->APB1FZ=		DBGMCU_APB1_FZ_DBG_IWDG_STOP;
+
+while(1)
+if	(	SysTick-> CTRL	&	SysTick_CTRL_COUNTFLAG_Msk)
+{}
+//////////////////////////////////////////////////////
+#if defined	(DBG_MODE_1) || defined(DBG_MODE_2)
+
+#define VREFINT_CAL			((uint16_t*) 0x1FFFF7BA)
+#define UID				      	((uint16_t*) 0x1FFFF7AC)
+x=		((uint32_t)(((*VREFINT_CAL)	&0x0fff)	*330))/Adc_Rslt;
+//////////////////////////////////////////////////////
