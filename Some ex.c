@@ -61,6 +61,12 @@ set breakpoint and an intruction after that. change PC to the next instruction f
 __BKPT	(1);
 __NOP	  ();
 //////////////////////////////////////////////////////
+https://stackoverflow.com/questions/27510198/how-to-delay-an-arm-cortex-m0-for-n-cycles-without-a-timer
+delay in assembly
+   movs  r0, #NUM    ;1 cycle
+1: subs  r0, r0, #1  ;1 cycle
+   bne   1b          ;2 if taken, 1 otherwise
+//////////////////////////////////////////////////////
 enter ascii in windows
 0x0d  \r  '\r'  carriage return
 0x0a  \n  '\n'  line feed
