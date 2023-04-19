@@ -48,6 +48,26 @@ uint8_t 	__CLZ (uint32_t value)
 *   keil do not switch to handler mode- control bit not change
 *   how to exit from bkpt instruction
 //////////////////////////////////////////////////////
+#define CoreDebug_BASE      (0xE000EDF0UL)
+#define CoreDebug           ((CoreDebug_Type *)     CoreDebug_BASE)   /*!< Core Debug configuration struct */
+
+/**
+  \brief  Structure type to access the Core Debug Register (CoreDebug).
+ */
+typedef struct
+{
+  __IOM uint32_t DHCSR;                  /*!< Offset: 0x000 (R/W)  Debug Halting Control and Status Register */
+  __OM  uint32_t DCRSR;                  /*!< Offset: 0x004 ( /W)  Debug Core Register Selector Register */
+  __IOM uint32_t DCRDR;                  /*!< Offset: 0x008 (R/W)  Debug Core Register Data Register */
+  __IOM uint32_t DEMCR;                  /*!< Offset: 0x00C (R/W)  Debug Exception and Monitor Control Register */
+} CoreDebug_Type;
+
+//this doesnt work on CM0, it is claimed works on CM3,4
+if (CoreDebug->DHCSR & CoreDebug_DHCSR_C_DEBUGEN_Msk)
+{
+	__BKPT(0);
+}
+//////////////////////////////////////////////////////
 stack depth calculation way:
 if	(0)
 {
